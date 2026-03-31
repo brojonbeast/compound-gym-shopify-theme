@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "highlights": {
+      "type": "gym-highlights",
+      "settings": {
+        "heading": "Our Facility",
+        "subheading": "Six purpose-built zones engineered for serious athletes. Everything you need, nothing you don't."
+      }
+    }
+  },
+  "order": ["highlights"]
+}
