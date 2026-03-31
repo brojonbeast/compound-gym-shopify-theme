@@ -627,38 +627,97 @@ p:last-child { margin-bottom: 0; }
 .highlights-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
+/* ── Zone card: full-bleed image with overlay text ── */
 .highlight-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
-  padding: 1.5rem;
-  transition: border-color 0.15s ease;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  display: block;
+  cursor: default;
 }
 
-.highlight-card:hover {
-  border-color: var(--color-primary);
+.highlight-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.highlight-card__zone {
-  font-size: 0.7rem;
+.highlight-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.highlight-card:hover .highlight-card__image {
+  transform: scale(1.04);
+}
+
+.highlight-card__placeholder {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-surface);
+}
+
+.highlight-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.10) 100%
+  );
+  z-index: 1;
+}
+
+.highlight-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background-color: var(--color-primary);
+  color: var(--color-btn-text);
+  font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.highlight-card__text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem;
+  z-index: 2;
 }
 
 .highlight-card__name {
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
 }
 
 .highlight-card__detail {
-  font-size: 0.875rem;
-  color: #666;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 /* Brands strip */
@@ -2053,7 +2112,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--color-heading); }
 
 /* Section subheadings, secondary text */
 .section__subheading { color: var(--color-subtext); }
-.highlight-card__detail { color: var(--color-subtext); }
+/* .highlight-card__detail color is set inline in card CSS above */
 .price-card__period { color: var(--color-subtext); }
 .price-card__note { color: var(--color-subtext); }
 .faq-answer { color: var(--color-subtext); }
@@ -2104,10 +2163,9 @@ h1, h2, h3, h4, h5, h6 { color: var(--color-heading); }
 .form-errors { background: rgba(185,28,28,0.12); border-color: rgba(252,165,165,0.25); color: #f87171; }
 .form-success { background: rgba(22,101,52,0.12); border-color: rgba(134,239,172,0.25); color: #4ade80; }
 
-/* Highlight cards */
-.highlight-card { background-color: var(--color-surface); border-color: var(--color-border); }
-.highlight-card:hover { border-color: var(--color-primary); }
-.highlight-card__zone { color: var(--color-primary); }
+/* Highlight cards — image overlay design, no borders needed */
+.highlight-card__badge { background-color: var(--color-primary); color: var(--color-btn-text); }
+.highlight-card__placeholder { background-color: var(--color-surface); }
 
 /* Price cards */
 .price-card { background-color: var(--color-surface); border-color: var(--color-border); }
@@ -2183,28 +2241,4 @@ h1, h2, h3, h4, h5, h6 { color: var(--color-heading); }
 .skip-to-content { background: var(--color-primary); color: var(--color-btn-text); }
 :focus-visible { outline-color: var(--color-primary); }
 
-/* ── Highlight Card Image Support ───────────────────────────────────────── */
-.highlight-card__image-wrap {
-  width: 100%;
-  aspect-ratio: 3/2;
-  overflow: hidden;
-  border-radius: var(--radius-card) var(--radius-card) 0 0;
-  margin: -1.5rem -1.5rem 1.25rem;
-  width: calc(100% + 3rem);
-}
-
-.highlight-card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.highlight-card:hover .highlight-card__image {
-  transform: scale(1.03);
-}
-
-.highlight-card__body {
-  flex: 1;
-}
+/* Highlight card image styles are defined in the Gym Highlights section above */

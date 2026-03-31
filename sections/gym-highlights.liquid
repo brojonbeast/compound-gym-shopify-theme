@@ -14,64 +14,42 @@
     <div class="highlights-grid" role="list" aria-label="Facility zones">
       {%- for block in section.blocks -%}
         <article class="highlight-card" role="listitem" {{ block.shopify_attributes }}>
-          {%- if block.settings.image != blank -%}
-            <div class="highlight-card__image-wrap">
-              {{- block.settings.image | image_url: width: 600 | image_tag:
+          <div class="highlight-card__inner">
+            {%- if block.settings.image != blank -%}
+              {{- block.settings.image | image_url: width: 800 | image_tag:
                   class: 'highlight-card__image',
                   alt: block.settings.name,
                   loading: 'lazy',
-                  widths: '300, 400, 600' -}}
+                  widths: '400, 600, 800' -}}
+            {%- else -%}
+              <div class="highlight-card__placeholder"></div>
+            {%- endif -%}
+            <div class="highlight-card__overlay" aria-hidden="true"></div>
+            <span class="highlight-card__badge">{{ block.settings.zone_label }}</span>
+            <div class="highlight-card__text">
+              <h3 class="highlight-card__name">{{ block.settings.name }}</h3>
+              {%- if block.settings.detail != blank -%}
+                <p class="highlight-card__detail">{{ block.settings.detail }}</p>
+              {%- endif -%}
             </div>
-          {%- endif -%}
-          <div class="highlight-card__body">
-            <div class="highlight-card__zone" aria-hidden="true">{{ block.settings.zone_label }}</div>
-            <h3 class="highlight-card__name">{{ block.settings.name }}</h3>
-            <p class="highlight-card__detail">{{ block.settings.detail }}</p>
           </div>
         </article>
       {%- else -%}
-        <article class="highlight-card" role="listitem">
-          <div class="highlight-card__body">
-            <div class="highlight-card__zone" aria-hidden="true">Zone 01</div>
-            <h3 class="highlight-card__name">Powerlifting Section</h3>
-            <p class="highlight-card__detail">Competition Grade Platforms</p>
-          </div>
-        </article>
-        <article class="highlight-card" role="listitem">
-          <div class="highlight-card__body">
-            <div class="highlight-card__zone" aria-hidden="true">Zone 02</div>
-            <h3 class="highlight-card__name">Dumbbell Section</h3>
-            <p class="highlight-card__detail">5lb &ndash; 150lb Precision Steel</p>
-          </div>
-        </article>
-        <article class="highlight-card" role="listitem">
-          <div class="highlight-card__body">
-            <div class="highlight-card__zone" aria-hidden="true">Zone 03</div>
-            <h3 class="highlight-card__name">Lower Body / Legs</h3>
-            <p class="highlight-card__detail">Hammer Strength Specialized</p>
-          </div>
-        </article>
-        <article class="highlight-card" role="listitem">
-          <div class="highlight-card__body">
-            <div class="highlight-card__zone" aria-hidden="true">Zone 04</div>
-            <h3 class="highlight-card__name">Posing Room</h3>
-            <p class="highlight-card__detail">Curated Lighting &amp; Mirrors</p>
-          </div>
-        </article>
-        <article class="highlight-card" role="listitem">
-          <div class="highlight-card__body">
-            <div class="highlight-card__zone" aria-hidden="true">Zone 05</div>
-            <h3 class="highlight-card__name">Infrared Saunas</h3>
-            <p class="highlight-card__detail">Detox &amp; Muscle Recovery</p>
-          </div>
-        </article>
-        <article class="highlight-card" role="listitem">
-          <div class="highlight-card__body">
-            <div class="highlight-card__zone" aria-hidden="true">Zone 06</div>
-            <h3 class="highlight-card__name">Upper Body Section</h3>
-            <p class="highlight-card__detail">Specialized Isolation Equipment</p>
-          </div>
-        </article>
+        {%- assign fallback_zones = "Zone 01|Powerlifting Section|Competition Grade Platforms,Zone 02|Dumbbell Section|5lb – 150lb Precision Steel,Zone 03|Lower Body / Legs|Hammer Strength Specialized,Zone 04|Posing Room|Curated Lighting & Mirrors,Zone 05|Infrared Saunas|Detox & Muscle Recovery,Zone 06|Upper Body Section|Specialized Isolation Equipment" | split: "," -%}
+        {%- for zone in fallback_zones -%}
+          {%- assign parts = zone | split: "|" -%}
+          <article class="highlight-card" role="listitem">
+            <div class="highlight-card__inner">
+              <div class="highlight-card__placeholder"></div>
+              <div class="highlight-card__overlay" aria-hidden="true"></div>
+              <span class="highlight-card__badge">{{ parts[0] }}</span>
+              <div class="highlight-card__text">
+                <h3 class="highlight-card__name">{{ parts[1] }}</h3>
+                <p class="highlight-card__detail">{{ parts[2] }}</p>
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
       {%- endfor -%}
     </div>
 
@@ -142,7 +120,7 @@
           "type": "image_picker",
           "id": "image",
           "label": "Zone photo",
-          "info": "Recommended: 600×400px or wider. Optional."
+          "info": "Recommended: 800×600px or wider."
         },
         {
           "type": "text",
@@ -182,7 +160,7 @@
           "settings": {
             "zone_label": "Zone 02",
             "name": "Dumbbell Section",
-            "detail": "5lb – 150lb Precision Steel"
+            "detail": "5lb \u2013 150lb Precision Steel"
           }
         },
         {
