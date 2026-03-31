@@ -1,8 +1,21 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
+        "seo_title": "",
+        "seo_description": "",
+        "bg_image": "shopify://shop_images/Untitled_design_3.png",
+        "eyebrow": "Houston, TX",
         "heading": "Houston's Premier Private Gym",
         "subheading": "24/7 access to elite equipment. No crowds. No contracts. Just results.",
         "cta_primary_label": "View Memberships",
@@ -15,24 +28,33 @@
     "gym-highlights": {
       "type": "gym-highlights",
       "settings": {
+        "seo_title": "",
+        "seo_description": "",
         "heading": "A True Private Training Experience",
-        "subheading": "Six purpose-built zones engineered for serious athletes."
+        "subheading": "Six purpose-built zones engineered for serious athletes.",
+        "show_brands": true
       }
     },
     "memberships-preview": {
       "type": "memberships-pricing",
       "settings": {
+        "seo_title": "",
+        "seo_description": "",
         "heading": "Membership Options",
         "heading_level": "h2",
         "subheading": "No hidden fees. No surprises. Cancel anytime.",
         "show_cta": true,
         "cta_label": "View All Plans",
-        "cta_url": "/pages/memberships"
+        "cta_url": "/pages/memberships",
+        "show_included": false,
+        "show_faq": false
       }
     },
     "pt-teaser": {
       "type": "pt-services",
       "settings": {
+        "seo_title": "",
+        "seo_description": "",
         "heading": "Personal Training",
         "heading_level": "h2",
         "subheading": "Expert 1-on-1 and semi-private coaching inside Compound's private facility.",
@@ -41,14 +63,22 @@
         "cta_url": "/pages/personal-training",
         "show_process": false,
         "show_trainer": false,
+        "trainer_name": "Your Trainer Name",
+        "trainer_credentials": "NSCA-CSCS · Powerlifting Coach · 10+ Years",
+        "trainer_bio": "A no-nonsense, data-driven approach to coaching. Whether you're chasing strength records or reshaping your body, every session is built around measurable progress — not guesswork.",
+        "trainer_years": "10+",
+        "trainer_clients": "200+",
+        "trainer_cert": "NSCA",
         "show_faq": false
       }
     },
     "google-reviews": {
       "type": "google-reviews",
       "settings": {
-        "heading": "What Our Members Are Saying",
+        "seo_title": "",
+        "seo_description": "",
         "enabled": true,
+        "heading": "What Our Members Are Saying",
         "liquid_code": ""
       }
     }
