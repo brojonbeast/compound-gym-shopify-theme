@@ -2015,3 +2015,196 @@ p:last-child { margin-bottom: 0; }
     gap: 1rem;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   DARK THEME + LIME GREEN ACCENT — overrides
+   Primary = #c8ff00 (lime), Background = #0a0a0a, Headings = #fff
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Headings use white, not lime green */
+h1, h2, h3, h4, h5, h6 { color: var(--color-heading); }
+
+/* Header uses dark bg, not lime */
+.site-header { background-color: var(--color-header-bg); }
+.mobile-menu { background-color: var(--color-header-bg); }
+.mobile-menu__link { color: rgba(255,255,255,0.9); }
+.mobile-menu__link:hover { background-color: rgba(255,255,255,0.06); color: #fff; }
+
+/* Nav links stay white */
+.site-nav__link { color: rgba(255,255,255,0.8); }
+.site-nav__link:hover,
+.site-item--active .site-nav__link { color: #fff; }
+
+/* Primary button: lime green with black text */
+.btn--primary { background-color: var(--color-primary); border-color: var(--color-primary); color: var(--color-btn-text); }
+.btn--primary:hover { background-color: #aad900; border-color: #aad900; color: #000; }
+
+/* Ghost button: lime outline */
+.btn--ghost { border-color: var(--color-primary); color: var(--color-primary); }
+.btn--ghost:hover { background-color: var(--color-primary); color: var(--color-btn-text); }
+
+/* Accent button */
+.btn--accent { background-color: var(--color-accent); border-color: var(--color-accent); color: var(--color-btn-text); }
+.btn--accent:hover { background-color: #aad900; border-color: #aad900; }
+
+/* Hero ghost button override */
+.hero .btn--ghost { border-color: rgba(255,255,255,0.5); color: #fff; }
+.hero .btn--ghost:hover { background-color: rgba(255,255,255,0.1); border-color: #fff; }
+
+/* Section subheadings, secondary text */
+.section__subheading { color: var(--color-subtext); }
+.highlight-card__detail { color: var(--color-subtext); }
+.price-card__period { color: var(--color-subtext); }
+.price-card__note { color: var(--color-subtext); }
+.faq-answer { color: var(--color-subtext); }
+.pt-format-card__desc { color: var(--color-subtext); }
+.pt-contact__desc { color: var(--color-subtext); }
+.product-description { color: var(--color-subtext); }
+.account-address { color: var(--color-subtext); }
+.cart-empty__message { color: var(--color-subtext); }
+.cart-summary__continue { color: var(--color-subtext); }
+.cart-summary__continue:hover { color: var(--color-primary); }
+.cart-item__variant { color: var(--color-subtext); }
+.cart-item__remove { color: var(--color-subtext); }
+.account-page__subtitle { color: var(--color-subtext); }
+.account-page__links { color: var(--color-subtext); }
+.account-empty { color: var(--color-subtext); }
+.trainer-card__bio { color: var(--color-subtext); }
+.about-stat__label { color: var(--color-subtext); }
+.contact-details__list dt { color: var(--color-subtext); }
+.brands-strip__label { color: var(--color-subtext); }
+.brands-strip__list { color: var(--color-subtext); }
+.orders-table th { color: var(--color-subtext); }
+.order-status { color: var(--color-subtext); }
+.cart-summary__tax-note { color: var(--color-subtext); }
+.form-note { color: var(--color-subtext); }
+.trainer-stat__label { color: var(--color-subtext); }
+.product-card__price--compare { color: var(--color-subtext); }
+.product-price__compare { color: var(--color-subtext); }
+
+/* Breadcrumbs */
+.breadcrumbs { background-color: var(--color-surface); border-bottom-color: var(--color-border); }
+.breadcrumbs__list { color: var(--color-subtext); }
+.breadcrumbs__link { color: var(--color-subtext); }
+.breadcrumbs__link:hover { color: var(--color-primary); }
+.breadcrumbs__item--separator { color: #444; }
+
+/* Form inputs on dark bg */
+.form-input, .form-select, .form-textarea {
+  color: var(--color-text);
+  background-color: #111111;
+  border-color: var(--color-border);
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--color-primary);
+}
+.form-label { color: var(--color-heading); }
+
+/* Form error/success — dark-appropriate */
+.form-errors { background: rgba(185,28,28,0.12); border-color: rgba(252,165,165,0.25); color: #f87171; }
+.form-success { background: rgba(22,101,52,0.12); border-color: rgba(134,239,172,0.25); color: #4ade80; }
+
+/* Highlight cards */
+.highlight-card { background-color: var(--color-surface); border-color: var(--color-border); }
+.highlight-card:hover { border-color: var(--color-primary); }
+.highlight-card__zone { color: var(--color-primary); }
+
+/* Price cards */
+.price-card { background-color: var(--color-surface); border-color: var(--color-border); }
+.price-card--featured { border-color: var(--color-primary); background-color: #111; }
+.price-card__badge { background-color: var(--color-primary); color: var(--color-btn-text); }
+.price-card__price { color: var(--color-heading); }
+.price-card__feature { border-bottom-color: var(--color-border); }
+.price-card__check { color: var(--color-primary); }
+
+/* Memberships */
+.memberships-included { background-color: var(--color-surface); border-color: var(--color-border); }
+.check { color: var(--color-primary); }
+.faq-question { color: var(--color-heading); border-top-color: var(--color-border); }
+.passes-note { background-color: var(--color-surface); border-left-color: var(--color-primary); }
+
+/* PT */
+.pt-format-card { background-color: var(--color-surface); border-color: var(--color-border); }
+.pt-process__number { background-color: var(--color-primary); color: var(--color-btn-text); }
+
+/* About */
+.about-stats { background-color: var(--color-surface); }
+.about-stat__number { color: var(--color-primary); }
+
+/* Contact */
+.contact-details__list dd { color: var(--color-text); }
+
+/* Cart */
+.cart-item { border-bottom-color: var(--color-border); }
+.cart-item__qty-input { background-color: #111; color: var(--color-text); border-color: var(--color-border); }
+.cart-summary { background-color: var(--color-surface); border-color: var(--color-border); }
+.cart-summary__subtotal { border-bottom-color: var(--color-border); }
+
+/* Account */
+.account-header { border-bottom-color: var(--color-border); }
+.account-details { background-color: var(--color-surface); border-color: var(--color-border); }
+.orders-table th { border-bottom-color: var(--color-border); }
+.orders-table td { border-bottom-color: var(--color-border); }
+.order-status { background-color: var(--color-surface); }
+.order-status--paid { background-color: rgba(22,101,52,0.2); color: #4ade80; }
+.order-status--pending { background-color: rgba(146,64,14,0.2); color: #fbbf24; }
+.order-status--refunded { background-color: var(--color-surface); color: var(--color-subtext); }
+
+/* Google Reviews section */
+.google-reviews { background-color: var(--color-surface); }
+
+/* Pagination */
+.pagination .prev, .pagination .next, .pagination .page {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+.pagination .current {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-btn-text);
+}
+
+/* Product cards */
+.product-card { border-color: var(--color-border); }
+.product-card:hover { border-color: var(--color-primary); }
+.product-card__title-link { color: var(--color-heading); }
+.product-card__price { color: var(--color-heading); }
+.product-card__image-placeholder { color: #444; }
+.product-card__sold-out { background-color: #333; }
+
+/* Product detail */
+.product-title { color: var(--color-heading); }
+.product-price { color: var(--color-heading); }
+.product-thumbnail { border-color: var(--color-border); }
+.product-thumbnail--active, .product-thumbnail:hover { border-color: var(--color-primary); }
+.product-image-main__img { border-color: var(--color-border); }
+
+/* Skip link */
+.skip-to-content { background: var(--color-primary); color: var(--color-btn-text); }
+:focus-visible { outline-color: var(--color-primary); }
+
+/* ── Highlight Card Image Support ───────────────────────────────────────── */
+.highlight-card__image-wrap {
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  margin: -1.5rem -1.5rem 1.25rem;
+  width: calc(100% + 3rem);
+}
+
+.highlight-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover .highlight-card__image {
+  transform: scale(1.03);
+}
+
+.highlight-card__body {
+  flex: 1;
+}

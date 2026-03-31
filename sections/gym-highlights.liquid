@@ -14,40 +14,63 @@
     <div class="highlights-grid" role="list" aria-label="Facility zones">
       {%- for block in section.blocks -%}
         <article class="highlight-card" role="listitem" {{ block.shopify_attributes }}>
-          <div class="highlight-card__zone" aria-hidden="true">{{ block.settings.zone_label }}</div>
-          <h3 class="highlight-card__name">{{ block.settings.name }}</h3>
-          <p class="highlight-card__detail">{{ block.settings.detail }}</p>
+          {%- if block.settings.image != blank -%}
+            <div class="highlight-card__image-wrap">
+              {{- block.settings.image | image_url: width: 600 | image_tag:
+                  class: 'highlight-card__image',
+                  alt: block.settings.name,
+                  loading: 'lazy',
+                  widths: '300, 400, 600' -}}
+            </div>
+          {%- endif -%}
+          <div class="highlight-card__body">
+            <div class="highlight-card__zone" aria-hidden="true">{{ block.settings.zone_label }}</div>
+            <h3 class="highlight-card__name">{{ block.settings.name }}</h3>
+            <p class="highlight-card__detail">{{ block.settings.detail }}</p>
+          </div>
         </article>
       {%- else -%}
         <article class="highlight-card" role="listitem">
-          <div class="highlight-card__zone" aria-hidden="true">Zone 01</div>
-          <h3 class="highlight-card__name">Powerlifting Section</h3>
-          <p class="highlight-card__detail">Competition Grade Platforms</p>
+          <div class="highlight-card__body">
+            <div class="highlight-card__zone" aria-hidden="true">Zone 01</div>
+            <h3 class="highlight-card__name">Powerlifting Section</h3>
+            <p class="highlight-card__detail">Competition Grade Platforms</p>
+          </div>
         </article>
         <article class="highlight-card" role="listitem">
-          <div class="highlight-card__zone" aria-hidden="true">Zone 02</div>
-          <h3 class="highlight-card__name">Dumbbell Section</h3>
-          <p class="highlight-card__detail">5lb &ndash; 150lb Precision Steel</p>
+          <div class="highlight-card__body">
+            <div class="highlight-card__zone" aria-hidden="true">Zone 02</div>
+            <h3 class="highlight-card__name">Dumbbell Section</h3>
+            <p class="highlight-card__detail">5lb &ndash; 150lb Precision Steel</p>
+          </div>
         </article>
         <article class="highlight-card" role="listitem">
-          <div class="highlight-card__zone" aria-hidden="true">Zone 03</div>
-          <h3 class="highlight-card__name">Lower Body / Legs</h3>
-          <p class="highlight-card__detail">Hammer Strength Specialized</p>
+          <div class="highlight-card__body">
+            <div class="highlight-card__zone" aria-hidden="true">Zone 03</div>
+            <h3 class="highlight-card__name">Lower Body / Legs</h3>
+            <p class="highlight-card__detail">Hammer Strength Specialized</p>
+          </div>
         </article>
         <article class="highlight-card" role="listitem">
-          <div class="highlight-card__zone" aria-hidden="true">Zone 04</div>
-          <h3 class="highlight-card__name">Posing Room</h3>
-          <p class="highlight-card__detail">Curated Lighting &amp; Mirrors</p>
+          <div class="highlight-card__body">
+            <div class="highlight-card__zone" aria-hidden="true">Zone 04</div>
+            <h3 class="highlight-card__name">Posing Room</h3>
+            <p class="highlight-card__detail">Curated Lighting &amp; Mirrors</p>
+          </div>
         </article>
         <article class="highlight-card" role="listitem">
-          <div class="highlight-card__zone" aria-hidden="true">Zone 05</div>
-          <h3 class="highlight-card__name">Infrared Saunas</h3>
-          <p class="highlight-card__detail">Detox &amp; Muscle Recovery</p>
+          <div class="highlight-card__body">
+            <div class="highlight-card__zone" aria-hidden="true">Zone 05</div>
+            <h3 class="highlight-card__name">Infrared Saunas</h3>
+            <p class="highlight-card__detail">Detox &amp; Muscle Recovery</p>
+          </div>
         </article>
         <article class="highlight-card" role="listitem">
-          <div class="highlight-card__zone" aria-hidden="true">Zone 06</div>
-          <h3 class="highlight-card__name">Upper Body Section</h3>
-          <p class="highlight-card__detail">Specialized Isolation Equipment</p>
+          <div class="highlight-card__body">
+            <div class="highlight-card__zone" aria-hidden="true">Zone 06</div>
+            <h3 class="highlight-card__name">Upper Body Section</h3>
+            <p class="highlight-card__detail">Specialized Isolation Equipment</p>
+          </div>
         </article>
       {%- endfor -%}
     </div>
@@ -115,6 +138,12 @@
       "type": "zone",
       "name": "Zone",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Zone photo",
+          "info": "Recommended: 600×400px or wider. Optional."
+        },
         {
           "type": "text",
           "id": "zone_label",
