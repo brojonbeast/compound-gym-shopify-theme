@@ -2,9 +2,61 @@
   "sections": {
     "highlights": {
       "type": "gym-highlights",
+      "blocks": {
+        "zone-01": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Zone 01",
+            "name": "Powerlifting Section",
+            "detail": "Competition Grade Platforms"
+          }
+        },
+        "zone-02": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Zone 02",
+            "name": "Dumbbell Section",
+            "detail": "5lb – 150lb Precision Steel"
+          }
+        },
+        "zone-03": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Zone 03",
+            "name": "Lower Body / Legs",
+            "detail": "Hammer Strength Specialized"
+          }
+        },
+        "zone-04": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Zone 04",
+            "name": "Posing Room",
+            "detail": "Curated Lighting & Mirrors"
+          }
+        },
+        "zone-05": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Zone 05",
+            "name": "Infrared Saunas",
+            "detail": "Detox & Muscle Recovery"
+          }
+        },
+        "zone-06": {
+          "type": "zone",
+          "settings": {
+            "zone_label": "Zone 06",
+            "name": "Upper Body Section",
+            "detail": "Specialized Isolation Equipment"
+          }
+        }
+      },
+      "block_order": ["zone-01", "zone-02", "zone-03", "zone-04", "zone-05", "zone-06"],
       "settings": {
         "heading": "Our Facility",
-        "subheading": "Six purpose-built zones engineered for serious athletes. Everything you need, nothing you don't."
+        "subheading": "Six purpose-built zones engineered for serious athletes. Everything you need, nothing you don't.",
+        "show_brands": true
       }
     }
   },
