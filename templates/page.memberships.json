@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "memberships": {
+      "type": "memberships-pricing",
+      "settings": {
+        "heading": "Membership Options",
+        "subheading": "No hidden fees. No surprises. Choose the plan that fits your goals.",
+        "show_cta": false,
+        "show_faq": true,
+        "show_included": true
+      }
+    }
+  },
+  "order": ["memberships"]
+}

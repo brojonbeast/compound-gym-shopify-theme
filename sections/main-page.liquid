@@ -1,0 +1,34 @@
+<section class="main-page section" aria-labelledby="page-heading-{{ section.id }}">
+  <div class="container container--narrow">
+    <header class="section__header section__header--left">
+      <h1 id="page-heading-{{ section.id }}" class="section__heading">{{ page.title }}</h1>
+    </header>
+    <div class="rte main-page__content">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page Content",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "These values take highest priority. Leave blank to use the per-page defaults from Theme Settings → SEO — Per Page, or the page title/description from Shopify Admin."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters recommended."
+    }
+  ]
+}
+{% endschema %}

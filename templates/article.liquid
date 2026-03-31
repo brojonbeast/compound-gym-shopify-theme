@@ -1,0 +1,10 @@
+<article class="article section" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="container">
+    <header>
+      <h1 itemprop="headline">{{ article.title }}</h1>
+      <p><time itemprop="datePublished" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%B %d, %Y' }}</time></p>
+    </header>
+    <div itemprop="articleBody">{{ article.content }}</div>
+    <p><a href="{{ blog.url }}">&larr; Back to {{ blog.title }}</a></p>
+  </div>
+</article>

@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "contact": {
+      "type": "contact-info",
+      "settings": {
+        "heading": "Find Us",
+        "show_map": true
+      }
+    }
+  },
+  "order": ["contact"]
+}

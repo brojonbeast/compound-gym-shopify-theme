@@ -1,0 +1,104 @@
+<section class="day-passes section" aria-labelledby="passes-heading-{{ section.id }}">
+  <div class="container">
+
+    <header class="section__header">
+      <h1 id="passes-heading-{{ section.id }}" class="section__heading">
+        {{ section.settings.heading }}
+      </h1>
+      {%- if section.settings.subheading != blank -%}
+        <p class="section__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="pricing-grid" role="list" aria-label="Day pass options">
+      {%- render 'price-card',
+        badge: '',
+        name: 'Day Pass',
+        price: '$20',
+        period: 'single visit',
+        note: 'Available anytime — no commitment',
+        features: 'All Equipment|Infrared Sauna|Free Parking|No Commitment|Available Anytime',
+        cta_label: 'Get Day Pass',
+        cta_url: 'https://compoundgym.gymmasteronline.com/portal/signup/details/256bc99ad3e52b58214537f2200c6db5?companyid=2',
+        featured: false
+      -%}
+      {%- render 'price-card',
+        badge: 'Popular',
+        name: 'Week Pass',
+        price: '$50',
+        period: '7 consecutive days',
+        note: '24/7 access for one week',
+        features: '24/7 Access|All Equipment|Infrared Sauna|Free Parking',
+        cta_label: 'Get Week Pass',
+        cta_url: 'https://compoundgym.gymmasteronline.com/portal/signup/details/9dcfd0657f57994a76af572ddd351b3d?companyid=2',
+        featured: true
+      -%}
+      {%- render 'price-card',
+        badge: '',
+        name: 'Month Pass',
+        price: '$100',
+        period: '30 consecutive days',
+        note: 'No auto-renewal',
+        features: '24/7 Access|All Equipment|Infrared Sauna|Free Parking|No Auto-Renewal',
+        cta_label: 'Get Month Pass',
+        cta_url: 'https://compoundgym.gymmasteronline.com/portal/signup/details/11734a2657e4a8e5341420370c035048?companyid=2',
+        featured: false
+      -%}
+    </div>
+
+    <div class="passes-note">
+      <p>
+        <strong>Visiting Houston?</strong> You can also purchase a day pass on-site by scanning the QR code at our entrance and following the instructions in our app.
+      </p>
+      <p class="passes-note__cta">
+        Ready to commit? <a href="/pages/memberships">View full memberships &rarr;</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Day Passes",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "These values take highest priority. Leave blank to use the per-page defaults from Theme Settings → SEO — Per Page, or the page title/description from Shopify Admin."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters recommended."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Day Passes"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section subheading",
+      "default": "Flexible access with no commitment. Perfect for visitors or trying us out."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Day Passes"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,110 @@
+<section class="cart-page container" aria-labelledby="cart-heading">
+  <h1 id="cart-heading" class="cart-page__title">Your Cart</h1>
+
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" novalidate>
+      <div class="cart-layout">
+
+        {%- comment -%}── Cart Items ─────────────────────────────────────────{%- endcomment -%}
+        <div class="cart-items" role="list" aria-label="Cart items">
+          {%- for item in cart.items -%}
+            <article class="cart-item" role="listitem">
+              <a href="{{ item.url }}" class="cart-item__image-link" tabindex="-1" aria-hidden="true">
+                {%- if item.image -%}
+                  <img
+                    src="{{ item.image | image_url: width: 160 }}"
+                    alt="{{ item.image.alt | escape }}"
+                    width="80"
+                    height="80"
+                    loading="lazy"
+                    class="cart-item__image"
+                  >
+                {%- endif -%}
+              </a>
+
+              <div class="cart-item__details">
+                <h2 class="cart-item__name">
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                </h2>
+                {%- unless item.product.has_only_default_variant -%}
+                  <p class="cart-item__variant">{{ item.variant.title }}</p>
+                {%- endunless -%}
+
+                <div class="cart-item__price-qty">
+                  <div class="cart-item__quantity">
+                    <label for="qty_{{ item.index }}" class="visually-hidden">
+                      {{ 'cart.quantity' | t }}
+                    </label>
+                    <input
+                      type="number"
+                      id="qty_{{ item.index }}"
+                      name="updates[]"
+                      value="{{ item.quantity }}"
+                      min="0"
+                      class="cart-item__qty-input"
+                      aria-label="{{ 'cart.quantity' | t }}"
+                    >
+                  </div>
+                  <div class="cart-item__price">
+                    {{ item.final_line_price | money }}
+                  </div>
+                </div>
+
+                <a
+                  href="{{ item.url_to_remove }}"
+                  class="cart-item__remove"
+                  aria-label="{{ 'cart.remove' | t }}: {{ item.product.title }}"
+                >
+                  {{ 'cart.remove' | t }}
+                </a>
+              </div>
+            </article>
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%}── Cart Summary ───────────────────────────────────────{%- endcomment -%}
+        <aside class="cart-summary" aria-label="Order summary">
+          <h2 class="cart-summary__title">{{ 'cart.order_summary' | t }}</h2>
+
+          <div class="cart-summary__subtotal">
+            <span>{{ 'cart.subtotal' | t }}</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+            <ul class="cart-summary__discounts" aria-label="Discounts">
+              {%- for discount in cart.cart_level_discount_applications -%}
+                <li class="cart-discount">
+                  <span class="cart-discount__label">{{ discount.title }}</span>
+                  <span class="cart-discount__amount">-{{ discount.total_allocated_amount | money }}</span>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          <p class="cart-summary__tax-note">{{ 'cart.taxes_note' | t }}</p>
+
+          <button type="submit" name="checkout" class="btn btn--primary btn--full cart-summary__checkout">
+            {{ 'cart.checkout' | t }}
+          </button>
+
+          <div class="cart-summary__update">
+            <button type="submit" name="update" class="btn btn--ghost btn--full">
+              {{ 'cart.update' | t }}
+            </button>
+          </div>
+
+          <a href="{{ routes.root_url }}" class="cart-summary__continue">
+            &larr; {{ 'cart.continue_shopping' | t }}
+          </a>
+        </aside>
+      </div>
+    </form>
+
+  {%- else -%}
+    <div class="cart-empty">
+      <p class="cart-empty__message">{{ 'cart.empty' | t }}</p>
+      <a href="{{ routes.root_url }}" class="btn btn--primary">{{ 'cart.continue_shopping' | t }}</a>
+    </div>
+  {%- endif -%}
+</section>

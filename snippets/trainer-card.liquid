@@ -1,0 +1,66 @@
+{%- comment -%}
+  Trainer card snippet for the personal training section.
+  Parameters:
+    name         — (string) trainer name
+    credentials  — (string) certifications and title
+    bio          — (string) trainer bio text
+    image        — (image object) trainer photo
+    years        — (string) years coaching
+    clients      — (string) number of clients trained
+    cert         — (string) primary certification label
+{%- endcomment -%}
+
+<article class="trainer-card" aria-label="{{ name | default: 'Personal Trainer' }} profile">
+  <div class="trainer-card__inner">
+
+    {%- if image -%}
+      <div class="trainer-card__image-wrap">
+        <img
+          src="{{ image | image_url: width: 400 }}"
+          alt="{{ image.alt | escape | default: name }}"
+          width="200"
+          height="200"
+          loading="lazy"
+          class="trainer-card__image"
+        >
+      </div>
+    {%- else -%}
+      <div class="trainer-card__image-wrap trainer-card__image-wrap--placeholder" aria-hidden="true">
+        <span class="trainer-card__initials">
+          {{ name | default: 'TN' | split: ' ' | map: 'first' | join: '' | upcase | slice: 0, 2 }}
+        </span>
+      </div>
+    {%- endif -%}
+
+    <div class="trainer-card__content">
+      <h3 class="trainer-card__name">{{ name | default: 'Your Trainer Name' }}</h3>
+      {%- if credentials != blank -%}
+        <p class="trainer-card__credentials">{{ credentials }}</p>
+      {%- endif -%}
+      {%- if bio != blank -%}
+        <p class="trainer-card__bio">{{ bio }}</p>
+      {%- endif -%}
+
+      <div class="trainer-card__stats" aria-label="Trainer statistics">
+        {%- if years != blank -%}
+          <div class="trainer-stat">
+            <span class="trainer-stat__number">{{ years }}</span>
+            <span class="trainer-stat__label">Years Coaching</span>
+          </div>
+        {%- endif -%}
+        {%- if clients != blank -%}
+          <div class="trainer-stat">
+            <span class="trainer-stat__number">{{ clients }}</span>
+            <span class="trainer-stat__label">Clients Trained</span>
+          </div>
+        {%- endif -%}
+        {%- if cert != blank -%}
+          <div class="trainer-stat">
+            <span class="trainer-stat__number">{{ cert }}</span>
+            <span class="trainer-stat__label">Certified</span>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</article>

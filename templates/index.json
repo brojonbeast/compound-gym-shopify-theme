@@ -1,0 +1,63 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Houston's Premier Private Gym",
+        "subheading": "24/7 access to elite equipment. No crowds. No contracts. Just results.",
+        "cta_primary_label": "View Memberships",
+        "cta_primary_url": "/pages/memberships",
+        "cta_secondary_label": "Get a Day Pass",
+        "cta_secondary_url": "/pages/passes",
+        "rating_text": "4.9/5 from 500+ Houston lifters"
+      }
+    },
+    "gym-highlights": {
+      "type": "gym-highlights",
+      "settings": {
+        "heading": "A True Private Training Experience",
+        "subheading": "Six purpose-built zones engineered for serious athletes."
+      }
+    },
+    "memberships-preview": {
+      "type": "memberships-pricing",
+      "settings": {
+        "heading": "Membership Options",
+        "heading_level": "h2",
+        "subheading": "No hidden fees. No surprises. Cancel anytime.",
+        "show_cta": true,
+        "cta_label": "View All Plans",
+        "cta_url": "/pages/memberships"
+      }
+    },
+    "pt-teaser": {
+      "type": "pt-services",
+      "settings": {
+        "heading": "Personal Training",
+        "heading_level": "h2",
+        "subheading": "Expert 1-on-1 and semi-private coaching inside Compound's private facility.",
+        "free_intro_label": "Free 1-Hour Intro Session",
+        "cta_label": "Get In Touch",
+        "cta_url": "/pages/personal-training",
+        "show_process": false,
+        "show_trainer": false,
+        "show_faq": false
+      }
+    },
+    "google-reviews": {
+      "type": "google-reviews",
+      "settings": {
+        "heading": "What Our Members Are Saying",
+        "enabled": true,
+        "liquid_code": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "gym-highlights",
+    "memberships-preview",
+    "pt-teaser",
+    "google-reviews"
+  ]
+}

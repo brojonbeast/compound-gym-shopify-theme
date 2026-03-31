@@ -1,0 +1,57 @@
+{%- comment -%}
+  Price card snippet for membership/pass pricing grids.
+  Parameters:
+    badge        — (string) label for top badge e.g. "Most Popular" (optional)
+    name         — (string) plan name
+    price        — (string) price display e.g. "$60"
+    period       — (string) billing period e.g. "per month"
+    note         — (string) secondary note under price e.g. "+ $100 sign-up fee"
+    features     — (string) pipe-separated list of feature strings
+    cta_label    — (string) CTA button label
+    cta_url      — (string) CTA button URL
+    featured     — (boolean) whether to apply featured styling
+{%- endcomment -%}
+
+{%- assign feature_list = features | split: '|' -%}
+
+<article
+  class="price-card{% if featured %} price-card--featured{% endif %}"
+  role="listitem"
+  aria-label="{{ name }} plan"
+>
+  {%- if badge != blank -%}
+    <span class="price-card__badge" aria-label="{{ badge }} plan">{{ badge }}</span>
+  {%- endif -%}
+
+  <header class="price-card__header">
+    <h3 class="price-card__name">{{ name }}</h3>
+    <div class="price-card__price-wrap">
+      <span class="price-card__price" aria-label="Price: {{ price }}">{{ price }}</span>
+      <span class="price-card__period">{{ period }}</span>
+    </div>
+    {%- if note != blank -%}
+      <p class="price-card__note">{{ note }}</p>
+    {%- endif -%}
+  </header>
+
+  <ul class="price-card__features" role="list" aria-label="{{ name }} plan features">
+    {%- for feature in feature_list -%}
+      {%- unless feature == blank -%}
+        <li class="price-card__feature">
+          <span class="price-card__check" aria-hidden="true">&#10003;</span>
+          {{ feature | strip }}
+        </li>
+      {%- endunless -%}
+    {%- endfor -%}
+  </ul>
+
+  <a
+    href="{{ cta_url }}"
+    class="btn{% if featured %} btn--primary{% else %} btn--ghost{% endif %} btn--full price-card__cta"
+    rel="noopener"
+    target="_blank"
+    aria-label="{{ cta_label }} — {{ name }} plan"
+  >
+    {{ cta_label }}
+  </a>
+</article>

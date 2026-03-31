@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "about": {
+      "type": "about-story",
+      "settings": {
+        "heading": "About Compound Gym",
+        "body": "<p>Compound Gym is Houston's premier private strength and performance facility. We built this gym for serious athletes who want access to elite equipment, a clean organized environment, and a community that takes training as seriously as they do.</p><p>Located at 7523 South Fwy in Houston, TX, we offer 24/7 access, infrared saunas, and over 500 active members committed to raw results.</p>"
+      }
+    },
+    "highlights": {
+      "type": "gym-highlights",
+      "settings": {
+        "heading": "The Facility",
+        "subheading": "Six purpose-built zones engineered for elite performance."
+      }
+    }
+  },
+  "order": ["about", "highlights"]
+}

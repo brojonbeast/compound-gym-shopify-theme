@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "pt": {
+      "type": "pt-services",
+      "settings": {
+        "heading": "Personal Training",
+        "subheading": "Expert coaching built around you — 1-on-1 and semi-private sessions inside Compound's private facility.",
+        "free_intro_label": "Free 1-Hour Intro Session",
+        "cta_label": "Get In Touch",
+        "cta_url": "#pt-contact",
+        "show_process": true,
+        "show_trainer": true,
+        "show_faq": true
+      }
+    }
+  },
+  "order": ["pt"]
+}

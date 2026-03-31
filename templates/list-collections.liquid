@@ -1,0 +1,10 @@
+<section class="list-collections section">
+  <div class="container">
+    <h1>All Collections</h1>
+    <ul>
+      {%- for collection in collections -%}
+        <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>

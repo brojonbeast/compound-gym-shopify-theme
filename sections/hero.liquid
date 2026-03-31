@@ -1,0 +1,145 @@
+<section
+  class="hero{% if section.settings.bg_image %} hero--has-image{% endif %}"
+  aria-labelledby="hero-heading-{{ section.id }}"
+  {% if section.settings.bg_image %}
+    style="--hero-bg: url('{{ section.settings.bg_image | image_url: width: 1600 }}');"
+  {% else %}
+    style="--hero-bg: none;"
+  {% endif %}
+>
+  {%- if section.settings.bg_image -%}
+    <div class="hero__overlay" aria-hidden="true"></div>
+  {%- endif -%}
+
+  <div class="container hero__inner">
+    <div class="hero__content">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      <h1
+        id="hero-heading-{{ section.id }}"
+        class="hero__heading"
+      >
+        {{ section.settings.heading }}
+      </h1>
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+
+      <div class="hero__actions">
+        {%- if section.settings.cta_primary_label != blank -%}
+          <a
+            href="{{ section.settings.cta_primary_url | default: '/pages/memberships' }}"
+            class="btn btn--primary btn--lg"
+          >
+            {{ section.settings.cta_primary_label }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.cta_secondary_label != blank -%}
+          <a
+            href="{{ section.settings.cta_secondary_url | default: '/pages/passes' }}"
+            class="btn btn--ghost btn--lg"
+          >
+            {{ section.settings.cta_secondary_label }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.rating_text != blank -%}
+        <p class="hero__rating" aria-label="{{ section.settings.rating_text }}">
+          <span class="hero__rating-stars" aria-hidden="true">★★★★★</span>
+          {{ section.settings.rating_text }}
+        </p>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "These values take highest priority. Leave blank to use the per-page defaults from Theme Settings → SEO — Per Page, or the page title/description from Shopify Admin."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters recommended."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Recommended: 1600×900 or larger."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text (above heading)",
+      "default": "Houston, TX"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading (H1)",
+      "default": "Houston's Premier Private Gym"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "24/7 access to elite equipment. No crowds. No contracts. Just results."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary CTA label",
+      "default": "View Memberships"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary CTA label",
+      "default": "Get a Day Pass"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "4.9/5 from 500+ Houston lifters"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,133 @@
+{%- comment -%}── Google Maps Embed ───────────────────────────────────────{%- endcomment -%}
+{%- if settings.maps_embed_url != blank -%}
+  <div class="footer-map" aria-label="Gym location map">
+    <iframe
+      src="{{ settings.maps_embed_url }}"
+      width="100%"
+      height="450"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="{{ settings.gym_name | default: shop.name }} Location"
+    ></iframe>
+  </div>
+{%- endif -%}
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container site-footer__inner">
+
+    {%- comment -%}── Brand Column ───────────────────────────────────────{%- endcomment -%}
+    <div class="footer-col footer-col--brand">
+      <a href="{{ routes.root_url }}" class="footer-brand__logo-link" aria-label="{{ shop.name }} — Home">
+        {%- if settings.logo -%}
+          <img
+            src="{{ settings.logo | image_url: width: 140 }}"
+            alt="{{ shop.name }}"
+            width="140"
+            height="auto"
+            loading="lazy"
+            class="footer-brand__logo"
+          >
+        {%- else -%}
+          <span class="footer-brand__name">{{ settings.gym_name | default: shop.name }}</span>
+        {%- endif -%}
+      </a>
+      <p class="footer-brand__tagline">Houston's premier private strength and performance facility.</p>
+      {%- render 'social-links' -%}
+    </div>
+
+    {%- comment -%}── Quick Links Column ─────────────────────────────────{%- endcomment -%}
+    <nav class="footer-col footer-col--nav" aria-label="Footer navigation">
+      <h3 class="footer-col__heading">Quick Links</h3>
+      <ul class="footer-nav__list" role="list">
+        {%- for link in linklists[settings.footer_menu].links -%}
+          <li><a href="{{ link.url }}" class="footer-nav__link">{{ link.title }}</a></li>
+        {%- else -%}
+          <li><a href="/pages/memberships" class="footer-nav__link">Memberships</a></li>
+          <li><a href="/pages/passes" class="footer-nav__link">Day Passes</a></li>
+          <li><a href="/pages/personal-training" class="footer-nav__link">Personal Training</a></li>
+          <li><a href="/collections/apparel" class="footer-nav__link">Shop</a></li>
+          <li><a href="/pages/about" class="footer-nav__link">About</a></li>
+          <li><a href="/pages/contact" class="footer-nav__link">Contact</a></li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- comment -%}── Contact Column ─────────────────────────────────────{%- endcomment -%}
+    <address class="footer-col footer-col--contact">
+      <h3 class="footer-col__heading">Contact</h3>
+      <ul class="footer-contact__list" role="list">
+        {%- if settings.address_street != blank -%}
+          <li class="footer-contact__item">
+            <span class="footer-contact__label">Address</span>
+            <span class="footer-contact__value">
+              {{ settings.address_street }},<br>
+              {{ settings.address_city }}, {{ settings.address_state }} {{ settings.address_zip }}
+            </span>
+          </li>
+        {%- endif -%}
+        {%- if settings.hours != blank -%}
+          <li class="footer-contact__item">
+            <span class="footer-contact__label">Hours</span>
+            <span class="footer-contact__value">{{ settings.hours }}</span>
+          </li>
+        {%- endif -%}
+        {%- if settings.phone != blank -%}
+          <li class="footer-contact__item">
+            <span class="footer-contact__label">Phone</span>
+            <a href="tel:{{ settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' }}" class="footer-contact__link">
+              {{ settings.phone }}
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.email != blank -%}
+          <li class="footer-contact__item">
+            <span class="footer-contact__label">Email</span>
+            <a href="mailto:{{ settings.email }}" class="footer-contact__link">{{ settings.email }}</a>
+          </li>
+        {%- endif -%}
+      </ul>
+    </address>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom__inner">
+      <p class="footer-bottom__copy">
+        &copy; {{ 'now' | date: '%Y' }} {{ settings.gym_name | default: shop.name }}. All rights reserved.
+      </p>
+      <p class="footer-bottom__policy">
+        <a href="{{ shop.privacy_policy.url }}">Privacy Policy</a>
+        &bull;
+        <a href="{{ shop.refund_policy.url }}">Refund Policy</a>
+        &bull;
+        <a href="{{ shop.terms_of_service.url }}">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "Optional meta title/description override for this section. Leave blank to use page defaults."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters."
+    }
+  ]
+}
+{% endschema %}

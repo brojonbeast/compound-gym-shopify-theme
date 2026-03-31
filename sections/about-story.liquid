@@ -1,0 +1,116 @@
+<section class="about-story section" aria-labelledby="about-heading-{{ section.id }}">
+  <div class="container">
+
+    <header class="section__header">
+      <h1 id="about-heading-{{ section.id }}" class="section__heading">
+        {{ section.settings.heading }}
+      </h1>
+    </header>
+
+    <div class="about-layout">
+
+      {%- if section.settings.image -%}
+        <div class="about-layout__image">
+          <img
+            src="{{ section.settings.image | image_url: width: 800 }}"
+            alt="{{ section.settings.image.alt | escape | default: section.settings.heading }}"
+            width="800"
+            height="600"
+            loading="lazy"
+            class="about-story__img"
+          >
+        </div>
+      {%- endif -%}
+
+      <div class="about-layout__content">
+        {%- if section.settings.body != blank -%}
+          <div class="about-story__body rte">{{ section.settings.body }}</div>
+        {%- endif -%}
+
+        {%- comment -%}── Stats Row ──────────────────────────────────────{%- endcomment -%}
+        <div class="about-stats" aria-label="Gym stats">
+          <div class="about-stat">
+            <span class="about-stat__number">500+</span>
+            <span class="about-stat__label">Active Athletes</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat__number">24/7</span>
+            <span class="about-stat__label">Access</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat__number">4.9</span>
+            <span class="about-stat__label">Google Rating</span>
+          </div>
+        </div>
+
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url | default: '/pages/memberships' }}" class="btn btn--primary">
+            {{ section.settings.cta_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Story",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "These values take highest priority. Leave blank to use the per-page defaults from Theme Settings → SEO — Per Page, or the page title/description from Shopify Admin."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters recommended."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Page heading (H1)",
+      "default": "About Compound Gym"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "About image"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "About body text",
+      "default": "<p>Compound Gym is Houston's premier private strength and performance facility. We built this gym for serious athletes who want access to elite equipment, a clean organized environment, and a community that takes training as seriously as they do.</p><p>Located at 7523 South Fwy in Houston, TX, we offer 24/7 access, infrared saunas, and a growing community of athletes committed to raw results.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "View Memberships"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Story"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,113 @@
+<section class="apparel-grid section" aria-labelledby="collection-heading">
+  <div class="container">
+
+    <header class="section__header">
+      <h1 id="collection-heading" class="section__heading">
+        {{ collection.title | default: 'Shop Apparel' }}
+      </h1>
+      {%- if collection.description != blank -%}
+        <div class="section__subheading">{{ collection.description }}</div>
+      {%- endif -%}
+    </header>
+
+    {%- comment -%}── Schema.org: ItemList for collection ────────────────{%- endcomment -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": {{ collection.title | json }},
+      "numberOfItems": {{ collection.products_count }},
+      "itemListElement": [
+        {%- for product in collection.products -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "name": {{ product.title | json }},
+            "url": {{ shop.url | append: product.url | json }},
+            "image": {{ product.featured_image | image_url: width: 800 | prepend: 'https:' | json }},
+            "offers": {
+              "@type": "Offer",
+              "price": {{ product.price | money_without_currency | json }},
+              "priceCurrency": {{ cart.currency.iso_code | json }},
+              "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}"
+            }
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+    </script>
+
+    {%- assign products_per_page = section.settings.products_per_row | times: 4 -%}
+    {%- paginate collection.products by products_per_page -%}
+    {%- if collection.products.size > 0 -%}
+      <ul
+        class="product-grid product-grid--{{ section.settings.products_per_row }}-col"
+        role="list"
+        aria-label="{{ collection.title }} products"
+      >
+        {%- for product in collection.products -%}
+          <li class="product-grid__item">
+            {%- render 'product-card', product: product -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" aria-label="Collection pagination">
+          {{ paginate | default_pagination }}
+        </nav>
+      {%- endif -%}
+
+    {%- else -%}
+      <div class="collection-empty">
+        <p>No products found in this collection.</p>
+        <a href="{{ routes.root_url }}" class="btn btn--ghost">Back to Home</a>
+      </div>
+    {%- endif -%}
+    {%- endpaginate -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Apparel Grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "These values take highest priority. Leave blank to use the per-page defaults from Theme Settings → SEO — Per Page, or the page title/description from Shopify Admin."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters recommended."
+    },
+    {
+      "type": "header",
+      "content": "Display"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Products per row (desktop)",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filter",
+      "label": "Show sort/filter bar",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

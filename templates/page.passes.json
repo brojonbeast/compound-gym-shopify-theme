@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "passes": {
+      "type": "day-passes",
+      "settings": {
+        "heading": "Day Passes",
+        "subheading": "Flexible access with no commitment. Perfect for visitors or trying us out."
+      }
+    }
+  },
+  "order": ["passes"]
+}

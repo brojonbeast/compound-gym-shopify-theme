@@ -1,0 +1,75 @@
+{%- comment -%}
+  Social links snippet — renders social media icon links from theme settings.
+  Outputs nothing if no social links are configured.
+{%- endcomment -%}
+
+{%- liquid
+  assign has_social = false
+  if settings.instagram_url != blank or settings.facebook_url != blank or settings.tiktok_url != blank or settings.youtube_url != blank
+    assign has_social = true
+  endif
+-%}
+
+{%- if has_social -%}
+  <nav class="social-links" aria-label="Social media links">
+    <ul class="social-links__list" role="list">
+
+      {%- if settings.instagram_url != blank -%}
+        <li class="social-links__item">
+          <a
+            href="{{ settings.instagram_url }}"
+            class="social-links__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="{{ settings.gym_name | default: shop.name }} on Instagram"
+          >
+            {%- render 'icon', icon: 'instagram', size: 20 -%}
+          </a>
+        </li>
+      {%- endif -%}
+
+      {%- if settings.facebook_url != blank -%}
+        <li class="social-links__item">
+          <a
+            href="{{ settings.facebook_url }}"
+            class="social-links__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="{{ settings.gym_name | default: shop.name }} on Facebook"
+          >
+            {%- render 'icon', icon: 'facebook', size: 20 -%}
+          </a>
+        </li>
+      {%- endif -%}
+
+      {%- if settings.tiktok_url != blank -%}
+        <li class="social-links__item">
+          <a
+            href="{{ settings.tiktok_url }}"
+            class="social-links__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="{{ settings.gym_name | default: shop.name }} on TikTok"
+          >
+            {%- render 'icon', icon: 'tiktok', size: 20 -%}
+          </a>
+        </li>
+      {%- endif -%}
+
+      {%- if settings.youtube_url != blank -%}
+        <li class="social-links__item">
+          <a
+            href="{{ settings.youtube_url }}"
+            class="social-links__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="{{ settings.gym_name | default: shop.name }} on YouTube"
+          >
+            {%- render 'icon', icon: 'youtube', size: 20 -%}
+          </a>
+        </li>
+      {%- endif -%}
+
+    </ul>
+  </nav>
+{%- endif -%}

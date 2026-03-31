@@ -1,0 +1,252 @@
+{%- if template.name == 'page' and template.suffix == 'memberships' -%}
+{%- comment -%}── Schema.org: Product with Offers — only on dedicated memberships page ─{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Compound Gym Membership",
+  "description": "24/7 access gym membership at Compound Gym in Houston, TX. No contracts on monthly plan. Includes access to all equipment and infrared sauna.",
+  "brand": {
+    "@type": "Brand",
+    "name": {{ settings.gym_name | default: shop.name | json }}
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Monthly Membership",
+      "price": "60.00",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "60.00",
+        "priceCurrency": "USD",
+        "referenceQuantity": {
+          "@type": "QuantitativeValue",
+          "value": "1",
+          "unitCode": "MON"
+        }
+      },
+      "availability": "https://schema.org/InStock",
+      "url": {{ shop.url | append: '/pages/memberships' | json }},
+      "seller": {
+        "@type": "GymOrHealthClub",
+        "name": {{ settings.gym_name | default: shop.name | json }}
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "6-Month Membership",
+      "price": "330.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": {{ shop.url | append: '/pages/memberships' | json }},
+      "seller": {
+        "@type": "GymOrHealthClub",
+        "name": {{ settings.gym_name | default: shop.name | json }}
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Annual Membership",
+      "price": "600.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": {{ shop.url | append: '/pages/memberships' | json }},
+      "seller": {
+        "@type": "GymOrHealthClub",
+        "name": {{ settings.gym_name | default: shop.name | json }}
+      }
+    }
+  ]
+}
+</script>
+{%- endif -%}
+
+<section class="memberships section" aria-labelledby="memberships-heading-{{ section.id }}">
+  <div class="container">
+
+    <header class="section__header">
+      {%- if section.settings.heading_level == 'h2' -%}
+        <h2 id="memberships-heading-{{ section.id }}" class="section__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {%- else -%}
+        <h1 id="memberships-heading-{{ section.id }}" class="section__heading">
+          {{ section.settings.heading }}
+        </h1>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="section__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- comment -%}── Pricing Cards ─────────────────────────────────────{%- endcomment -%}
+    <div class="pricing-grid" role="list" aria-label="Membership options">
+      {%- render 'price-card',
+        badge: '',
+        name: 'Monthly',
+        price: '$60',
+        period: 'per month',
+        note: '+ $100 sign-up fee',
+        features: '24/7 Gym Access|No Contracts|Cancel Anytime|Clean Facility|Infrared Sauna Access',
+        cta_label: 'Get Started',
+        cta_url: 'https://compoundgym.gymmasteronline.com/portal/signup/details/ad5acee646af8e593628728d9e3d83a4?companyid=2',
+        featured: false
+      -%}
+      {%- render 'price-card',
+        badge: 'Most Popular',
+        name: '6-Month',
+        price: '$330',
+        period: 'every 6 months',
+        note: '$55/mo — $130 savings vs Monthly',
+        features: '24/7 Gym Access|No Sign-Up Fees|Clean Facility|Infrared Sauna Access|Priority Support',
+        cta_label: 'Get Started',
+        cta_url: 'https://compoundgym.gymmasteronline.com/portal/signup/details/cfa0a4024b7035e8d0fc042f6b821c47?companyid=2',
+        featured: true
+      -%}
+      {%- render 'price-card',
+        badge: 'Best Value',
+        name: 'Annual',
+        price: '$600',
+        period: 'per year',
+        note: '$50/mo — $220 savings vs Monthly',
+        features: '24/7 Gym Access|No Sign-Up Fees|Clean Facility|Infrared Sauna Access|Priority Support',
+        cta_label: 'Get Started',
+        cta_url: 'https://compoundgym.gymmasteronline.com/portal/signup/details/9bf612326405e7ba7949bb88aa20a881?companyid=2',
+        featured: false
+      -%}
+    </div>
+
+    {%- if section.settings.show_cta -%}
+      <div class="section__footer-cta">
+        <a href="{{ section.settings.cta_url | default: '/pages/memberships' }}" class="btn btn--ghost">
+          {{ section.settings.cta_label | default: 'View All Plans' }}
+        </a>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_included -%}
+      <div class="memberships-included">
+        <h3 class="memberships-included__heading">What&rsquo;s Included With Every Membership</h3>
+        <ul class="memberships-included__list" role="list">
+          <li><span class="check" aria-hidden="true">&#10003;</span> 24/7 Access</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Infrared Saunas</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Clean &amp; Organized Facility</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> No Crowds</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Premium Equipment</li>
+          <li><span class="check" aria-hidden="true">&#10003;</span> Free Parking</li>
+        </ul>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_faq -%}
+      <div class="memberships-faq">
+        <h3 class="memberships-faq__heading">Membership FAQ</h3>
+        <dl class="faq-list">
+          <dt class="faq-question">What&rsquo;s included with every membership?</dt>
+          <dd class="faq-answer">All plans include 24/7 facility access, all lifting equipment, infrared sauna access, and our private, non-crowded training environment. 1-on-1 training is available for those who want extra guidance.</dd>
+          <dt class="faq-question">Can I cancel my monthly membership?</dt>
+          <dd class="faq-answer">Yes, the Monthly plan is completely contract-free and can be cancelled at any time with a 30-day notice. 6-Month and Annual plans are prepaid and non-refundable.</dd>
+          <dt class="faq-question">How does 24/7 access work?</dt>
+          <dd class="faq-answer">Once your membership is active, you&rsquo;ll receive access to our GymMaster app that can open the door. You can also stop by during staffed hours to get a physical key fob.</dd>
+          <dt class="faq-question">Can I bring a guest?</dt>
+          <dd class="faq-answer">Yes! Every Friday from 8am&ndash;10pm, members can bring 1 guest for free.</dd>
+          <dt class="faq-question">What if I want to see the facility first?</dt>
+          <dd class="faq-answer">New visitors can easily purchase a day pass after hours by scanning the QR code at the entrance. Day passes start at $20.</dd>
+        </dl>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Memberships Pricing",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "These values take highest priority. Leave blank to use the per-page defaults from Theme Settings → SEO — Per Page, or the page title/description from Shopify Admin."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters recommended."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Membership Options"
+    },
+    {
+      "type": "select",
+      "id": "heading_level",
+      "label": "Heading level",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1 (use on dedicated Memberships page)"
+        },
+        {
+          "value": "h2",
+          "label": "H2 (use on homepage preview)"
+        }
+      ],
+      "default": "h1",
+      "info": "Set to H2 when this section appears alongside other H1 headings (e.g. homepage)."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section subheading",
+      "default": "No hidden fees. No surprises. Choose the plan that fits your goals."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show 'View All' CTA button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "View All Plans"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_included",
+      "label": "Show 'What's Included' list",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_faq",
+      "label": "Show membership FAQ",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Memberships Pricing"
+    }
+  ]
+}
+{% endschema %}

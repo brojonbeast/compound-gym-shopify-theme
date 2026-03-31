@@ -1,0 +1,186 @@
+<section class="product-detail section" aria-labelledby="product-title-{{ section.id }}">
+  <div class="container">
+
+    {%- comment -%}── Schema.org: Product ────────────────────────────────{%- endcomment -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": {{ product.title | json }},
+      "description": {{ product.description | strip_html | json }},
+      "image": {{ product.featured_image | image_url: width: 800 | prepend: 'https:' | json }},
+      "brand": {
+        "@type": "Brand",
+        "name": {{ shop.name | json }}
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": {{ shop.url | append: product.url | json }},
+        "priceCurrency": {{ cart.currency.iso_code | json }},
+        "price": {{ product.price | money_without_currency | json }},
+        "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+        "seller": {
+          "@type": "Organization",
+          "name": {{ shop.name | json }}
+        }
+      }
+    }
+    </script>
+
+    <div class="product-layout">
+
+      {%- comment -%}── Product Images ─────────────────────────────────────{%- endcomment -%}
+      <div class="product-layout__images">
+        {%- if product.images.size > 0 -%}
+          <div class="product-images">
+            <div class="product-image-main">
+              <img
+                src="{{ product.featured_image | image_url: width: 800 }}"
+                alt="{{ product.featured_image.alt | escape | default: product.title }}"
+                width="800"
+                height="800"
+                loading="eager"
+                class="product-image-main__img"
+                id="product-featured-img"
+              >
+            </div>
+            {%- if product.images.size > 1 -%}
+              <div class="product-thumbnails" role="list" aria-label="Product image thumbnails">
+                {%- for image in product.images -%}
+                  <button
+                    class="product-thumbnail{% if forloop.first %} product-thumbnail--active{% endif %}"
+                    data-image-src="{{ image | image_url: width: 800 }}"
+                    aria-label="View image {{ forloop.index }}"
+                    role="listitem"
+                    type="button"
+                  >
+                    <img
+                      src="{{ image | image_url: width: 120 }}"
+                      alt="{{ image.alt | escape | default: product.title }}"
+                      width="80"
+                      height="80"
+                      loading="lazy"
+                    >
+                  </button>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%}── Product Info ───────────────────────────────────────{%- endcomment -%}
+      <div class="product-layout__info">
+        <h1 id="product-title-{{ section.id }}" class="product-title">{{ product.title }}</h1>
+        <p class="product-price">
+          {%- if product.compare_at_price > product.price -%}
+            <span class="product-price__sale">{{ product.price | money }}</span>
+            <s class="product-price__compare">{{ product.compare_at_price | money }}</s>
+          {%- else -%}
+            {{ product.price | money }}
+          {%- endif -%}
+        </p>
+
+        <script type="application/json" id="product-variants-{{ section.id }}">
+          {{ product.variants | json }}
+        </script>
+
+        {%- form 'product', product, id: 'product-form', data-section-id: section.id -%}
+          <input type="hidden" name="id" id="variant-id-{{ section.id }}" value="{{ product.selected_or_first_available_variant.id }}">
+
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="product-option form-field">
+                <label class="form-label" for="option-{{ option.name | handleize }}">{{ option.name }}</label>
+                <select
+                  id="option-{{ option.name | handleize }}"
+                  name="options[{{ option.name }}]"
+                  class="form-select product-option__select"
+                  data-option-index="{{ forloop.index0 }}"
+                >
+                  {%- for value in option.values -%}
+                    <option
+                      value="{{ value }}"
+                      {% if option.selected_value == value %}selected{% endif %}
+                    >
+                      {{ value }}
+                    </option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          {%- if section.settings.show_quantity -%}
+            <div class="form-field product-quantity">
+              <label class="form-label" for="quantity">Quantity</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+                class="form-input product-quantity__input"
+              >
+            </div>
+          {%- endif -%}
+
+          <button
+            type="submit"
+            class="btn btn--primary btn--lg btn--full"
+            {% unless product.available %}disabled aria-disabled="true"{% endunless %}
+          >
+            {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
+          </button>
+        {%- endform -%}
+
+        {%- if product.description != blank -%}
+          <div class="product-description rte">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Detail",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "These values take highest priority. Leave blank to use the per-page defaults from Theme Settings → SEO — Per Page, or the page title/description from Shopify Admin."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters recommended."
+    },
+    {
+      "type": "header",
+      "content": "Display"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "Show quantity selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sku",
+      "label": "Show SKU",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

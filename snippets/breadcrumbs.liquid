@@ -1,0 +1,132 @@
+{%- comment -%}
+  Breadcrumbs snippet — renders semantic breadcrumb navigation with BreadcrumbList schema.
+  Rendered in layout/theme.liquid on all non-homepage templates.
+{%- endcomment -%}
+
+{%- liquid
+  assign breadcrumb_list = ''
+  assign position = 1
+-%}
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": {{ shop.url | json }}
+      }
+      {%- if template.name == 'collection' -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ collection.title | json }},
+        "item": {{ shop.url | append: collection.url | json }}
+      }
+      {%- elsif template.name == 'product' -%}
+      {%- if collection -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ collection.title | json }},
+        "item": {{ shop.url | append: collection.url | json }}
+      }
+      ,{
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ product.title | json }},
+        "item": {{ shop.url | append: product.url | json }}
+      }
+      {%- else -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ product.title | json }},
+        "item": {{ shop.url | append: product.url | json }}
+      }
+      {%- endif -%}
+      {%- elsif template.name == 'page' -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ page.title | json }},
+        "item": {{ shop.url | append: page.url | json }}
+      }
+      {%- elsif template.name == 'cart' -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Cart",
+        "item": {{ shop.url | append: routes.cart_url | json }}
+      }
+      {%- elsif template.name == 'customers/login' -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Sign In",
+        "item": {{ shop.url | append: routes.account_login_url | json }}
+      }
+      {%- elsif template.name == 'customers/register' -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Create Account",
+        "item": {{ shop.url | append: routes.account_register_url | json }}
+      }
+      {%- elsif template.name == 'customers/account' -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "My Account",
+        "item": {{ shop.url | append: routes.account_url | json }}
+      }
+      {%- endif -%}
+    ]
+  }
+  </script>
+
+  <ol class="breadcrumbs__list" role="list">
+    <li class="breadcrumbs__item">
+      <a href="{{ routes.root_url }}" class="breadcrumbs__link">Home</a>
+    </li>
+
+    {%- if template.name == 'collection' -%}
+      <li class="breadcrumbs__item breadcrumbs__item--separator" aria-hidden="true">/</li>
+      <li class="breadcrumbs__item" aria-current="page">{{ collection.title }}</li>
+
+    {%- elsif template.name == 'product' -%}
+      {%- if collection -%}
+        <li class="breadcrumbs__item breadcrumbs__item--separator" aria-hidden="true">/</li>
+        <li class="breadcrumbs__item">
+          <a href="{{ collection.url }}" class="breadcrumbs__link">{{ collection.title }}</a>
+        </li>
+      {%- endif -%}
+      <li class="breadcrumbs__item breadcrumbs__item--separator" aria-hidden="true">/</li>
+      <li class="breadcrumbs__item" aria-current="page">{{ product.title }}</li>
+
+    {%- elsif template.name == 'page' -%}
+      <li class="breadcrumbs__item breadcrumbs__item--separator" aria-hidden="true">/</li>
+      <li class="breadcrumbs__item" aria-current="page">{{ page.title }}</li>
+
+    {%- elsif template.name == 'cart' -%}
+      <li class="breadcrumbs__item breadcrumbs__item--separator" aria-hidden="true">/</li>
+      <li class="breadcrumbs__item" aria-current="page">Cart</li>
+
+    {%- elsif template.name == 'customers/login' -%}
+      <li class="breadcrumbs__item breadcrumbs__item--separator" aria-hidden="true">/</li>
+      <li class="breadcrumbs__item" aria-current="page">Sign In</li>
+
+    {%- elsif template.name == 'customers/register' -%}
+      <li class="breadcrumbs__item breadcrumbs__item--separator" aria-hidden="true">/</li>
+      <li class="breadcrumbs__item" aria-current="page">Create Account</li>
+
+    {%- elsif template.name == 'customers/account' -%}
+      <li class="breadcrumbs__item breadcrumbs__item--separator" aria-hidden="true">/</li>
+      <li class="breadcrumbs__item" aria-current="page">My Account</li>
+    {%- endif -%}
+  </ol>
+</nav>

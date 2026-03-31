@@ -1,0 +1,324 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Compound Gym Replit Theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Compound Gym",
+    "theme_documentation_url": "https://github.com/your-repo/shopify-gym-theme#readme",
+    "theme_support_url": "https://github.com/brojonbeast/Compound-Gym-Replit-Theme"
+  },
+  {
+    "name": "General",
+    "settings": [
+      {
+        "type": "text",
+        "id": "gym_name",
+        "label": "Gym Name",
+        "default": "Compound Gym",
+        "info": "Used in schema markup and default meta titles."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 80,
+        "max": 320,
+        "step": 8,
+        "unit": "px",
+        "label": "Logo width",
+        "default": 160
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Default share image",
+        "info": "Used for Open Graph and Twitter Card when no page image is set. Recommended: 1200×630."
+      },
+      {
+        "type": "text",
+        "id": "seo_description",
+        "label": "Default meta description",
+        "default": "Compound Gym — Houston's premier private strength and performance facility. 24/7 access, elite equipment, personal training, and infrared saunas. No contracts. Join today.",
+        "info": "Fallback meta description for pages without a specific description."
+      }
+    ]
+  },
+  {
+    "name": "SEO — Per Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Homepage"
+      },
+      {
+        "type": "text",
+        "id": "seo_title_home",
+        "label": "Homepage meta title",
+        "default": "Compound Gym | 24/7 Private Gym in Houston, TX"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_description_home",
+        "label": "Homepage meta description",
+        "default": "Compound Gym is Houston's premier private gym offering 24/7 access, memberships starting at $60/mo, day passes, personal training, and an infrared sauna at 7523 South Fwy, Houston TX 77021."
+      },
+      {
+        "type": "header",
+        "content": "Memberships page"
+      },
+      {
+        "type": "text",
+        "id": "seo_title_memberships",
+        "label": "Memberships meta title",
+        "default": "Gym Memberships | Compound Gym Houston"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_description_memberships",
+        "label": "Memberships meta description",
+        "default": "Join Compound Gym in Houston for $60/mo (no contract) or save with a 6-month or annual membership. 24/7 access, no crowds, infrared sauna included."
+      },
+      {
+        "type": "header",
+        "content": "Day Passes page"
+      },
+      {
+        "type": "text",
+        "id": "seo_title_passes",
+        "label": "Day Passes meta title",
+        "default": "Day Passes | Compound Gym Houston"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_description_passes",
+        "label": "Day Passes meta description",
+        "default": "Visit Compound Gym without a commitment. Day passes from $20, weekly access for $50, or monthly drop-in for $100. No contract required."
+      },
+      {
+        "type": "header",
+        "content": "Personal Training page"
+      },
+      {
+        "type": "text",
+        "id": "seo_title_pt",
+        "label": "Personal Training meta title",
+        "default": "Personal Training | Compound Gym Houston"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_description_pt",
+        "label": "Personal Training meta description",
+        "default": "Expert 1-on-1 personal training at Compound Gym in Houston. Free 1-hour intro session. Private facility, expert coaches, results-focused programming."
+      },
+      {
+        "type": "header",
+        "content": "About page"
+      },
+      {
+        "type": "text",
+        "id": "seo_title_about",
+        "label": "About meta title",
+        "default": "About Compound Gym | Houston's Private Gym"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_description_about",
+        "label": "About meta description",
+        "default": "Compound Gym is a private training facility at 7523 South Fwy, Houston TX. Built for serious lifters who want a clean, uncrowded gym with 24/7 access and premium equipment."
+      },
+      {
+        "type": "header",
+        "content": "Contact page"
+      },
+      {
+        "type": "text",
+        "id": "seo_title_contact",
+        "label": "Contact meta title",
+        "default": "Contact Us | Compound Gym Houston"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_description_contact",
+        "label": "Contact meta description",
+        "default": "Get in touch with Compound Gym. Located at 7523 South Fwy, Houston TX 77021. Call, email, or stop by to learn more about memberships and personal training."
+      },
+      {
+        "type": "header",
+        "content": "Apparel collection"
+      },
+      {
+        "type": "text",
+        "id": "seo_title_collection",
+        "label": "Apparel collection meta title",
+        "default": "Compound Gym Apparel | Houston TX"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_description_collection",
+        "label": "Apparel collection meta description",
+        "default": "Shop Compound Gym branded apparel. Rep Houston's premier private gym with tees, tanks, and hoodies built for training."
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary color",
+        "default": "#0a0a0a",
+        "info": "Used for headings, nav background, and primary buttons."
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent color",
+        "default": "#c41e1e",
+        "info": "Used for highlighted elements, badge labels, and call-to-action emphasis."
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body text color",
+        "default": "#1a1a1a"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Page background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Card / surface background",
+        "default": "#f5f5f5"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border color",
+        "default": "#e0e0e0"
+      },
+      {
+        "type": "color",
+        "id": "color_btn_text",
+        "label": "Primary button text color",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Contact Info",
+    "settings": [
+      {
+        "type": "text",
+        "id": "address_street",
+        "label": "Street address",
+        "default": "7523 South Fwy"
+      },
+      {
+        "type": "text",
+        "id": "address_city",
+        "label": "City",
+        "default": "Houston"
+      },
+      {
+        "type": "text",
+        "id": "address_state",
+        "label": "State",
+        "default": "TX"
+      },
+      {
+        "type": "text",
+        "id": "address_zip",
+        "label": "ZIP code",
+        "default": "77021"
+      },
+      {
+        "type": "text",
+        "id": "phone",
+        "label": "Phone number"
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Contact email"
+      },
+      {
+        "type": "text",
+        "id": "hours",
+        "label": "Hours",
+        "default": "Open 24/7",
+        "info": "Displayed in the footer and contact page."
+      }
+    ]
+  },
+  {
+    "name": "Google Maps",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "maps_embed_url",
+        "label": "Google Maps embed URL",
+        "default": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6932.340010763229!2d-95.38066832296391!3d29.68585043546922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640bfcf70bdf3a1%3A0xfa04cfb7c2cd8504!2sCompound%20Gym!5e0!3m2!1sen!2sus!4v1774963529170!5m2!1sen!2sus",
+        "info": "Paste only the src URL from your Google Maps embed iframe (not the full iframe tag)."
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "facebook_url",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "tiktok_url",
+        "label": "TikTok URL"
+      },
+      {
+        "type": "url",
+        "id": "youtube_url",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "text",
+        "id": "twitter_handle",
+        "label": "X (Twitter) handle",
+        "info": "Without the @ symbol. Used for Twitter Card meta tag."
+      }
+    ]
+  },
+  {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "main_menu",
+        "label": "Main navigation menu",
+        "default": "main-menu",
+        "info": "Create a menu called 'main-menu' in Shopify Admin → Navigation."
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu",
+        "label": "Footer navigation menu",
+        "default": "footer",
+        "info": "Create a menu called 'footer' in Shopify Admin → Navigation."
+      }
+    ]
+  }
+]

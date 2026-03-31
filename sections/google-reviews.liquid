@@ -1,0 +1,77 @@
+{%- if section.settings.enabled -%}
+<section class="google-reviews section" aria-labelledby="reviews-heading-{{ section.id }}">
+  <div class="container">
+
+    {%- if section.settings.heading != blank -%}
+      <header class="section__header">
+        <h2 id="reviews-heading-{{ section.id }}" class="section__heading">
+          {{ section.settings.heading }}
+        </h2>
+      </header>
+    {%- endif -%}
+
+    <div class="google-reviews-widget">
+      {%- if section.settings.liquid_code != blank -%}
+        {{ section.settings.liquid_code }}
+      {%- else -%}
+        {%- comment -%}
+          Paste your Google Reviews app embed code above via the theme editor.
+          In Shopify Admin → Online Store → Themes → Customize → find this section
+          and paste the widget code provided by the Google Reviews app.
+        {%- endcomment -%}
+        <p class="google-reviews-widget__placeholder" style="text-align:center; color: #999; padding: 40px 0;">
+          Google Reviews widget will appear here once configured in the theme editor.
+        </p>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Google Reviews",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "Optional meta title/description override for this section. Leave blank to use page defaults."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters."
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Show Google Reviews section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "What Our Members Are Saying"
+    },
+    {
+      "type": "textarea",
+      "id": "liquid_code",
+      "label": "Google Reviews widget embed code",
+      "info": "Paste the embed code from your Google Reviews Shopify app here. Go to the Google Reviews app → Display Reviews → select your widget style → copy the embed code and paste it here."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Google Reviews"
+    }
+  ]
+}
+{% endschema %}

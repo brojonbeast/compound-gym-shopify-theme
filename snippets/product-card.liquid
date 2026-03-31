@@ -1,0 +1,48 @@
+{%- comment -%}
+  Product card snippet for apparel grid.
+  Parameters:
+    product — (product object) Shopify product
+{%- endcomment -%}
+
+<article class="product-card" aria-label="{{ product.title }}">
+  <a href="{{ product.url }}" class="product-card__image-link" tabindex="-1" aria-hidden="true">
+    {%- if product.featured_image -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 600 }}"
+        alt="{{ product.featured_image.alt | escape | default: product.title }}"
+        width="600"
+        height="600"
+        loading="lazy"
+        class="product-card__image"
+      >
+    {%- else -%}
+      <div class="product-card__image-placeholder" aria-hidden="true">
+        <span>{{ product.title | slice: 0, 1 }}</span>
+      </div>
+    {%- endif -%}
+    {%- unless product.available -%}
+      <span class="product-card__sold-out" aria-label="Sold out">Sold Out</span>
+    {%- endunless -%}
+  </a>
+
+  <div class="product-card__info">
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}" class="product-card__title-link">{{ product.title }}</a>
+    </h3>
+    <p class="product-card__price">
+      {%- if product.compare_at_price > product.price -%}
+        <span class="product-card__price--sale">{{ product.price | money }}</span>
+        <s class="product-card__price--compare">{{ product.compare_at_price | money }}</s>
+      {%- else -%}
+        {{ product.price | money }}
+      {%- endif -%}
+    </p>
+    <a
+      href="{{ product.url }}"
+      class="btn btn--ghost btn--sm product-card__cta"
+      aria-label="View {{ product.title }}"
+    >
+      View Product
+    </a>
+  </div>
+</article>

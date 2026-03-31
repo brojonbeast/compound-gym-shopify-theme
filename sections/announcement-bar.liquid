@@ -1,0 +1,71 @@
+{%- if section.settings.enabled and section.settings.text != blank -%}
+  <div
+    class="announcement-bar"
+    role="region"
+    aria-label="Announcement"
+    style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};"
+  >
+    <div class="container announcement-bar__inner">
+      {%- if section.settings.url != blank -%}
+        <a href="{{ section.settings.url }}" class="announcement-bar__text">
+          {{ section.settings.text }}
+        </a>
+      {%- else -%}
+        <p class="announcement-bar__text">{{ section.settings.text }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SEO",
+      "info": "Optional meta title/description override for this section. Leave blank to use page defaults."
+    },
+    {
+      "type": "text",
+      "id": "seo_title",
+      "label": "Meta title override"
+    },
+    {
+      "type": "textarea",
+      "id": "seo_description",
+      "label": "Meta description override",
+      "info": "Max 160 characters."
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "Open 24/7 — 7523 South Fwy, Houston, TX"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Link URL (optional)"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}
