@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "seo_title": "",
+        "seo_description": "",
+        "bg_image": "shopify://shop_images/Untitled_design_3.png",
+        "eyebrow": "Houston, TX",
+        "heading": "Houston's Premier Private Gym",
+        "subheading": "24/7 access to elite equipment. No crowds. No contracts. Just results.",
+        "cta_primary_label": "View Memberships",
+        "cta_primary_url": "/pages/memberships",
+        "cta_secondary_label": "Get a Day Pass",
+        "cta_secondary_url": "/pages/passes",
+        "rating_text": "4.9/5 from 500+ Houston lifters"
+      }
+    },
+    "gym-highlights": {
+      "type": "gym-highlights",
+      "blocks": {
+        "zone_33Lpjb": {
+          "type": "zone",
+          "settings": {
+            "image": "shopify://shop_images/Powerlifting_Section_ec357e81-4174-44ed-b29e-66eb166a3892.jpg",
+            "zone_label": "Zone 01",
+            "name": "Powerlifting Section",
+            "detail": "Competition Grade Platforms"
+          }
+        },
+        "zone_QxMznG": {
+          "type": "zone",
+          "settings": {
+            "image": "shopify://shop_images/Dumbbell_Section.jpg",
+            "zone_label": "Zone 02",
+            "name": "Dumbbell Section",
+            "detail": "5LB - 150LB Precision Steel"
+          }
+        },
+        "zone_XeDqQm": {
+          "type": "zone",
+          "settings": {
+            "image": "shopify://shop_images/Leg_Section.jpg",
+            "zone_label": "Zone 03",
+            "name": "Lower Body/legs",
+            "detail": "hammer strength specialized"
+          }
+        },
+        "zone_fDfaUf": {
+          "type": "zone",
+          "settings": {
+            "image": "shopify://shop_images/Posing_Room.jpg",
+            "zone_label": "Zone 04",
+            "name": "Posing room",
+            "detail": "curated lighting & mirrors"
+          }
+        },
+        "zone_APBzNk": {
+          "type": "zone",
+          "settings": {
+            "image": "shopify://shop_images/Infrared_Saunas.jpg",
+            "zone_label": "Zone 05",
+            "name": "infrared saunas",
+            "detail": "detox & muscle recovery"
+          }
+        },
+        "zone_qqKgd6": {
+          "type": "zone",
+          "settings": {
+            "image": "shopify://shop_images/Upper_Body_Section.jpg",
+            "zone_label": "Zone 06",
+            "name": "upper body section",
+            "detail": "specialized isolation equipment"
+          }
+        }
+      },
+      "block_order": [
+        "zone_33Lpjb",
+        "zone_QxMznG",
+        "zone_XeDqQm",
+        "zone_fDfaUf",
+        "zone_APBzNk",
+        "zone_qqKgd6"
+      ],
+      "settings": {
+        "seo_title": "",
+        "seo_description": "",
+        "heading": "A True Private Training Experience",
+        "subheading": "Six purpose-built zones engineered for serious athletes.",
+        "show_brands": true
+      }
+    },
+    "memberships-preview": {
+      "type": "memberships-pricing",
+      "settings": {
+        "seo_title": "",
+        "seo_description": "",
+        "heading": "Membership Options",
+        "heading_level": "h2",
+        "subheading": "No hidden fees. No surprises. Cancel anytime.",
+        "show_cta": true,
+        "cta_label": "View All Plans",
+        "cta_url": "/pages/memberships",
+        "show_included": false,
+        "show_faq": false
+      }
+    },
+    "pt-teaser": {
+      "type": "pt-services",
+      "settings": {
+        "seo_title": "",
+        "seo_description": "",
+        "heading": "Personal Training",
+        "heading_level": "h2",
+        "subheading": "Expert 1-on-1 and semi-private coaching inside Compound's private facility.",
+        "free_intro_label": "",
+        "cta_label": "Get In Touch",
+        "cta_url": "/pages/personal-training",
+        "show_process": false,
+        "show_trainer": false,
+        "trainer_name": "Your Trainer Name",
+        "trainer_credentials": "NSCA-CSCS · Powerlifting Coach · 10+ Years",
+        "trainer_bio": "A no-nonsense, data-driven approach to coaching. Whether you're chasing strength records or reshaping your body, every session is built around measurable progress — not guesswork.",
+        "trainer_years": "10+",
+        "trainer_clients": "200+",
+        "trainer_cert": "NSCA",
+        "show_faq": false
+      }
+    },
+    "google-reviews": {
+      "type": "google-reviews",
+      "settings": {
+        "seo_title": "",
+        "seo_description": "",
+        "enabled": true,
+        "heading": "What People Are Saying",
+        "liquid_code": "<script type=\"text/javascript\" src=\"https://cdn.grw.reputon.com/assets/widget.js?shop=zgpec4-s1.myshopify.com\" defer></script>\n<div class=\"reputon-google-reviews-widget\" data-type=\"dual_row_carousel\" data-content-index=\"1\" data-theme=\"custom\" data-review-photos-type=\"small\" data-write-review=\"false\" data-show-rating=\"false\" data-has-shadow=\"true\" data-fixed-reviews-height=\"false\" data-speed=\"5\" data-transparency=\"1\" data-font=\"theme\" data-solid-shadow=\"false\" data-rating-type=\"stars\" data-card-color=\"#000000\" data-stars-color=\"#FBB000\" data-text-color=\"#FFFFFF\"></div>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "gym-highlights",
+    "memberships-preview",
+    "pt-teaser",
+    "google-reviews"
+  ]
+}
