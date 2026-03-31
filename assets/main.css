@@ -1119,18 +1119,29 @@ p:last-child { margin-bottom: 0; }
 /* PT contact form */
 .pt-contact {
   max-width: 680px;
+  margin-inline: auto;
   margin-bottom: 3rem;
 }
 
 .pt-contact__heading {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .pt-contact__desc {
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.pt-contact .form-label,
+.pt-contact .form-field,
+.pt-contact .form-row,
+.pt-contact .btn,
+.pt-contact .form-note {
+  text-align: left;
 }
 
 /* ── About ──────────────────────────────────────────────────────────────── */
