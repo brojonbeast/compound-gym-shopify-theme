@@ -1,1 +1,38 @@
-{"sections":{"pt":{"type":"pt-services","settings":{"seo_title":"","seo_description":"","heading":"Personal Training","heading_level":"h1","subheading":"Expert coaching built around you — 1-on-1 and semi-private sessions inside Compound's private facility.","free_intro_label":"","cta_label":"Get In Touch","cta_url":"#pt-contact","show_process":true,"show_trainer":false,"trainer_name":"Your Trainer Name","trainer_credentials":"NSCA-CSCS · Powerlifting Coach · 10+ Years","trainer_bio":"A no-nonsense, data-driven approach to coaching. Whether you're chasing strength records or reshaping your body, every session is built around measurable progress — not guesswork.","trainer_years":"10+","trainer_clients":"200+","trainer_cert":"NSCA","show_faq":true}}},"order":["pt"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pt": {
+      "type": "pt-services",
+      "settings": {
+        "seo_title": "",
+        "seo_description": "",
+        "heading": "Personal Training",
+        "heading_level": "h1",
+        "subheading": "Expert coaching built around you — 1-on-1 and semi-private sessions inside Compound's private facility.",
+        "free_intro_label": "FREE 1-HOUR INTRO SESSION!",
+        "cta_label": "Get In Touch",
+        "cta_url": "#pt-contact",
+        "show_process": true,
+        "show_trainer": false,
+        "trainer_name": "Your Trainer Name",
+        "trainer_credentials": "NSCA-CSCS · Powerlifting Coach · 10+ Years",
+        "trainer_bio": "A no-nonsense, data-driven approach to coaching. Whether you're chasing strength records or reshaping your body, every session is built around measurable progress — not guesswork.",
+        "trainer_years": "10+",
+        "trainer_clients": "200+",
+        "trainer_cert": "NSCA",
+        "show_faq": true
+      }
+    }
+  },
+  "order": [
+    "pt"
+  ]
+}
